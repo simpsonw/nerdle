@@ -42,6 +42,13 @@ func main() {
 					result[k] = emptySpace
 				}
 			}
+			for k, v := range runeGuess {
+				if result[k] == emptySpace &&
+					strings.Contains(string(solution), string(v)) &&
+					!strings.Contains(strings.Join(result, ""), string(v)) {
+					result[k] = fmt.Sprintf("[%c]", v)
+				}
+			}
 		}
 
 		if guess == string(solution) {
